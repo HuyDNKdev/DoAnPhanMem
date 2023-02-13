@@ -1,10 +1,10 @@
 import React from "react";
+import { calculateWinner } from "../../helpers";
 import Cell from "./Cell";
 
 const Board = (props) => {
-  //   console.log(props);
-  //     const cells = [null, null, null, "X", "X", "X", null, null, null];
-  //     console.log(calculateWinner(cells));
+  //   const cells = [null, null, null, "X", "X", "X", null, null, null];
+  //   console.log(calculateWinner(cells));
 
   return (
     <div className="game-board">
@@ -12,10 +12,12 @@ const Board = (props) => {
         <Cell
           key={index}
           value={item}
-          onclick={() => props.onClick(index)}
+          onClick={() => props.onClick(index)}
+          className={item === "X" ? "is-x" : item === "O" ? "is-o" : ""}
         ></Cell>
       ))}
     </div>
   );
 };
+
 export default Board;
