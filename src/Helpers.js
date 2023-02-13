@@ -1,4 +1,3 @@
-
 export function calculateWinner(cells) {
   const lines = [
     [0, 1, 2],
@@ -10,6 +9,7 @@ export function calculateWinner(cells) {
     [0, 4, 8],
     [2, 4, 6],
   ];
+
   for (let index = 0; index < lines.length; index++) {
     const [a, b, c] = lines[index];
     if (cells[a] && cells[a] === cells[b] && cells[a] === cells[c]) {
@@ -18,4 +18,3 @@ export function calculateWinner(cells) {
   }
   return null;
 }
-
