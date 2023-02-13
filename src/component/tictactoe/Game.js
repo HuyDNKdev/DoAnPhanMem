@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import { calculateWinner } from "../../Helpers";
+import { calculateWinner } from "../../helpers";
 import Board from "./Board";
-import "./GameStyle.css";
+import "./GameStyles.css";
 
 const Game = () => {
   const [board, setBoard] = useState(Array(9).fill(null));
@@ -12,14 +12,26 @@ const Game = () => {
     if (winner || boardCopy[index]) return;
     boardCopy[index] = xIsNext ? "X" : "O";
     setBoard(boardCopy);
-    setXIsNext(!xIsNext);
-    
-  };console.log(handleClick);
-
+    setXIsNext((xIsNext) => !xIsNext);
+  };
+  const handleResetGame = () => {
+    setBoard(Array(9).fill(null));
+    setXIsNext(true);
+  };
   return (
     <div>
       <Board cells={board} onClick={handleClick}></Board>
+      {winner && (
+        <div className="game-winner">
+          {winner ? `Winner is  ${xIsNext ? "O" : "X"}` : ""}
+        </div>
+      )}
+
+      <button className="game-reset" onClick={handleResetGame}>
+        Reset Game
+      </button>
     </div>
   );
 };
+
 export default Game;
